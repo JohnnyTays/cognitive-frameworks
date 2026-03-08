@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Axis Recursive Forge | Revolutionary Application Architecture</title>
+    <meta name="description" content="Mathematical framework for 200x value multiplication through recursive framework stacking. Transform simple inputs into exponential value outputs.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF3366;
+            --primary-dark: #CC2952;
+            --secondary: #330011;
+            --accent: #FFD700;
+            --dark: #0A0510;
+            --text: #F8E8F0;
+            --text-muted: #9A7A8A;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .bg {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 0% 100%, rgba(255, 51, 102, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 0%, rgba(255, 215, 0, 0.06) 0%, transparent 50%),
+                linear-gradient(180deg, var(--dark) 0%, #080208 100%);
+            z-index: -1;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 51, 102, 0.12);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 51, 102, 0.25);
+        }
+        
+        .hero {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .formula-box {
+            background: rgba(255, 51, 102, 0.06);
+            border: 1px solid rgba(255, 51, 102, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem auto;
+            text-align: left;
+        }
+        
+        .formula-box h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .formula {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 2;
+        }
+        
+        .value-table {
+            display: table;
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+        }
+        
+        .value-row {
+            display: table-row;
+        }
+        
+        .value-cell {
+            display: table-cell;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        .value-header {
+            background: rgba(255, 51, 102, 0.1);
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .value-multiplier {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .section {
+            padding: 4rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .stages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .stage {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stage-num {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        
+        .stage h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .stage p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .example-box {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .example-box h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .example-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .example-linear, .example-recursive {
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .example-linear {
+            background: rgba(255,255,255,0.03);
+        }
+        
+        .example-recursive {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid var(--primary);
+        }
+        
+        .example-linear h4, .example-recursive h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .example-linear h4 { color: var(--text-muted); }
+        .example-recursive h4 { color: var(--primary); }
+        
+        .value-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .value-linear {
+            background: rgba(255,255,255,0.1);
+            color: var(--text);
+        }
+        
+        .value-recursive {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .cta {
+            padding: 5rem 5%;
+            text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(255, 51, 102, 0.03));
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .price-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            min-width: 250px;
+        }
+        
+        .price-card.featured {
+            border-color: var(--primary);
+            background: rgba(255, 51, 102, 0.05);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        
+        .price-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .price-card li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+        }
+        
+        .price-card li::before {
+            content: "✓ ";
+            color: var(--primary);
+        }
+        
+        .crypto-note {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .crypto-note p {
+            color: var(--accent);
+            margin: 0;
+        }
+        
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .stages { grid-template-columns: repeat(2, 1fr); }
+            .example-comparison { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">⟳</div>
+            <span>Recursive Forge</span>
+        </div>
+        <span class="badge">Proprietary Framework</span>
+    </nav>
+    
+    <section class="hero">
+        <h1>Multi-Axis Recursive Forge</h1>
+        <p>The architectural breakthrough that transforms simple applications into comprehensive expert consulting systems. Framework stacking for exponential value creation.</p>
+        
+        <div class="formula-box">
+            <h3>Value Multiplication Formula</h3>
+            <div class="formula">Linear:     Framework × Input = Output         (1x value)
+Recursive:  Frame A × (Frame B × (Frame C × Input)) = Exponential Output</div>
+        </div>
+        
+        <div class="value-table">
+            <div class="value-row">
+                <div class="value-cell value-header">Complexity</div>
+                <div class="value-cell value-header">Value Increase</div>
+                <div class="value-cell value-header">Example Output</div>
+            </div>
+            <div class="value-row">
+                <div class="value-cell">2 Frameworks</div>
+                <div class="value-cell"><span class="value-multiplier">10x</span></div>
+                <div class="value-cell">$5,000</div>
+            </div>
+            <div class="value-row">
+                <div class="value-cell">3 Frameworks</div>
+                <div class="value-cell"><span class="value-multiplier">50x</span></div>
+                <div class="value-cell">$25,000</div>
+            </div>
+            <div class="value-row">
+                <div class="value-cell">4 Frameworks</div>
+                <div class="value-cell"><span class="value-multiplier">200x</span></div>
+                <div class="value-cell">$100,000+</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>The Four-Stage Recursive Pattern</h2>
+        <div class="stages">
+            <div class="stage">
+                <div class="stage-num">1</div>
+                <h3>Foundation</h3>
+                <p>Apply primary framework to raw input. Generate baseline assessment.</p>
+            </div>
+            <div class="stage">
+                <div class="stage-num">2</div>
+                <h3>Causal Deconstruction</h3>
+                <p>Apply systems framework. Identify root causes and dependencies.</p>
+            </div>
+            <div class="stage">
+                <div class="stage-num">3</div>
+                <h3>Harmonic Re-patterning</h3>
+                <p>Apply frequency framework. Calculate intervention points.</p>
+            </div>
+            <div class="stage">
+                <div class="stage-num">4</div>
+                <h3>Implementation</h3>
+                <p>Apply optimization. Generate specific action protocols.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Value Comparison: VitalityAI</h2>
+        <div class="example-box">
+            <h3>Input: Photo Upload → Output: Health Assessment</h3>
+            <div class="example-comparison">
+                <div class="example-linear">
+                    <h4>Linear (Stage 1)</h4>
+                    <p>Framework: Human Anatomy Entropy</p>
+                    <p>Output: "Biological age 45"</p>
+                    <br>
+                    <span class="value-badge value-linear">$500 value</span>
+                </div>
+                <div class="example-recursive">
+                    <h4>Recursive Forge (Stage 2)</h4>
+                    <p>Round 1: → Baseline Analysis<br>
+                    Round 2: → Causal Loops<br>
+                    Round 3: → Frequency Protocol<br>
+                    Round 4: → Day-by-day Plan</p>
+                    <br>
+                    <span class="value-badge value-recursive">$50,000+ value</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Framework Stack Examples</h2>
+        <div class="formula-box">
+            <h3>Health Application</h3>
+            <div class="formula">[Human Anatomy → RCFT → GMF → RMAC]</div>
+        </div>
+        <div class="formula-box">
+            <h3>Legal Application</h3>
+            <div class="formula">[Legal Analysis → RCFT → GMF → RMAC]</div>
+        </div>
+        <div class="formula-box">
+            <h3>Business Application</h3>
+            <div class="formula">[Market Analysis → RCFT → GMF → RMAC]</div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>Acquire Recursive Forge</h2>
+        <p>Complete architectural framework + implementation template</p>
+        
+        <div class="pricing">
+            <div class="price-card">
+                <div class="price">$3,499 <span>USD</span></div>
+                <ul>
+                    <li>4-stage framework template</li>
+                    <li>Implementation architecture</li>
+                    <li>Basic documentation</li>
+                </ul>
+            </div>
+            <div class="price-card featured">
+                <div class="price">$9,999 <span>USD</span></div>
+                <ul>
+                    <li>Complete Recursive Forge</li>
+                    <li>All framework stacks</li>
+                    <li>Domain-specific templates</li>
+                    <li>Implementation code</li>
+                    <li>Priority support</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="crypto-note">
+            <p>💎 Crypto payments accepted. Contact for wallet.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2026 Recursive Forge Framework. Mathematical property.</p>
+    </footer>
+</body>
+</html>

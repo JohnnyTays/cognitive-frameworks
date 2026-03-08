@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAIOC Framework | IBOS Optimization Mathematics</title>
+    <meta name="description" content="Complete mathematical analysis for IBOS performance, security, and operational capacity optimization.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00FF88;
+            --primary-dark: #00CC6A;
+            --secondary: #003D24;
+            --accent: #FF6B35;
+            --dark: #0A140D;
+            --text: #E8F8F0;
+            --text-muted: #6B9A7A;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .bg {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 0% 100%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 0%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, var(--dark) 0%, #050A07 100%);
+            z-index: -1;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.12);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 255, 136, 0.25);
+        }
+        
+        .hero {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .formula-box {
+            background: rgba(0, 255, 136, 0.06);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem auto;
+            text-align: left;
+        }
+        
+        .formula-box h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .formula {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 2.2;
+            white-space: pre-wrap;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .metric {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+        
+        .section {
+            padding: 4rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .components {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .component {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+        
+        .component h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .component p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .component .score {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+        
+        .cta {
+            padding: 5rem 5%;
+            text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(0, 255, 136, 0.03));
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .price-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            min-width: 250px;
+        }
+        
+        .price-card.featured {
+            border-color: var(--primary);
+            background: rgba(0, 255, 136, 0.05);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        
+        .price-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        
+        .price-card li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+        }
+        
+        .price-card li::before {
+            content: "✓ ";
+            color: var(--primary);
+        }
+        
+        .crypto-note {
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .crypto-note p {
+            color: var(--accent);
+            margin: 0;
+        }
+        
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .components { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">τ</div>
+            <span>TAIOC</span>
+        </div>
+        <span class="badge">Proprietary Framework</span>
+    </nav>
+    
+    <section class="hero">
+        <h1>TAIOC Framework</h1>
+        <h2 style="color: var(--accent); font-size: 1.3rem; margin-bottom: 1rem;">IBOS Optimization via Mathematical Analysis</h2>
+        <p>Complete mathematical framework for quantifying IBOS operational capacity, performance baselines, and security optimization. The calculus behind autonomous operations.</p>
+        
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">88.33</div>
+                <div class="metric-label">Foundation Score</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">157.5</div>
+                <div class="metric-label">Operational Load</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">80</div>
+                <div class="metric-label">Adaptability</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7,362</div>
+                <div class="metric-label">Baseline Efficiency</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Core Metrics</h2>
+        <div class="formula-box">
+            <h3>Foundation Strength (A₁)</h3>
+            <div class="formula">IBOS_A₁ = (IBOS_Core_Principles + IBOS_Validation + IBOS_Implementation) ÷ 3
+
+IBOS Core_Principles (92/100):
+  Digital twin brain clarity:    25/25
+  Persona methodology:           24/25
+  Operational invisibility:     23/25
+  Command framework:             20/25
+
+IBOS Validation (88/100):
+  Persona validation:           22/25
+  Business verification:        23/25
+  Command system testing:       21/25
+  Revenue generation:           22/25
+
+IBOS Implementation (85/100):
+  Firebase systems:              21/25
+  Persona deployment:           22/25
+  Operation automation:          20/25
+  Quality control:              22/25
+
+IBOS_A₁ Final = (92 + 88 + 85) ÷ 3 = <span style="color: var(--primary)">88.33</span></div>
+        </div>
+        
+        <div class="formula-box">
+            <h3>Response Latency (A₃)</h3>
+            <div class="formula">IBOS_A₃ = Σ(Command_Processing × Weight) ÷ Σ(Weight)
+
+Simple command:     30s × 1.0 = 30
+Persona creation:  300s × 2.5 = 750
+Multi-op coord:    120s × 1.8 = 216
+
+Weighted Average:  <span style="color: var(--primary)">85 seconds</span></div>
+        </div>
+        
+        <div class="formula-box">
+            <h3>Recursive Complexity</h3>
+            <div class="formula">IBOS_R_AI = 12 (Interdependent operational layers)
+
+IBOS_ΔT_AI = Persona_Points + Operation_Points + Interface_Points + Command_Points + Scaling_Points
+IBOS_ΔT_AI = 18 + 16 + 14 + 17 + 15 = <span style="color: var(--primary)">80</span></div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Optimization Components</h2>
+        <div class="components">
+            <div class="component">
+                <h3>Security Multipliers</h3>
+                <p>Persona complexity exposure, data liability vulnerability, operational compliance scores.</p>
+                <div class="score">8.5/10</div>
+            </div>
+            <div class="component">
+                <h3>Asset Protection</h3>
+                <p>Total IBOS value divided by $500K threshold plus IP critical factor.</p>
+                <div class="score">9.5/10</div>
+            </div>
+            <div class="component">
+                <h3>Neural Architecture</h3>
+                <p>Multi-jurisdiction layer integration with adaptive countermeasures.</p>
+                <div class="score">9.2/10</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>Acquire TAIOC Framework</h2>
+        <p>Complete mathematical toolkit for IBOS optimization</p>
+        
+        <div class="pricing">
+            <div class="price-card">
+                <div class="price">$2,499 <span>USD</span></div>
+                <ul>
+                    <li>Foundation metrics formulas</li>
+                    <li>Operational load calculator</li>
+                    <li>Response latency equations</li>
+                    <li>Security assessment tools</li>
+                </ul>
+            </div>
+            <div class="price-card featured">
+                <div class="price">$6,999 <span>USD</span></div>
+                <ul>
+                    <li>Complete TAIOC toolkit</li>
+                    <li>All metric calculators</li>
+                    <li>Security optimization suite</li>
+                    <li>Implementation guide</li>
+                    <li>Priority support</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="crypto-note">
+            <p>💎 Crypto payments accepted. Contact for wallet.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2026 TAIOC Framework. Mathematical property.</p>
+    </footer>
+</body>
+</html>

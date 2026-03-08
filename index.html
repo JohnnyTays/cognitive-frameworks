@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8B5CF6;
             --dark: #0F0D1A;
             --text: #E2E8F0;
             --text-muted: #94A3B8;
@@ -19,26 +18,12 @@
             background: var(--dark);
             color: var(--text);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 2rem;
         }
-        .container {
-            max-width: 800px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-        p { color: var(--text-muted); margin-bottom: 3rem; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 0.5rem; }
+        p { color: var(--text-muted); text-align: center; margin-bottom: 3rem; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         .card {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
@@ -48,53 +33,63 @@
             color: var(--text);
             transition: all 0.3s;
         }
-        .card:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .card h2 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-        .card .formula {
-            font-family: monospace;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-        @media (max-width: 600px) {
-            .grid { grid-template-columns: 1fr; }
-        }
+        .card:hover { border-color: #8B5CF6; transform: translateY(-3px); }
+        .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .card h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .card .formula { font-family: monospace; color: #8B5CF6; font-size: 0.9rem; }
+        .card .price { font-size: 1.25rem; font-weight: 700; color: #10B981; margin-top: 1rem; }
+        .card .desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; }
+        @media (max-width: 800px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 500px) { .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Cognitive Frameworks</h1>
-        <p>Proprietary mathematical frameworks for AI agents</p>
+        <p>Proprietary mathematical frameworks for autonomous systems</p>
         
         <div class="grid">
+            <a href="ibos-system/" class="card">
+                <div class="card-icon">⦿</div>
+                <h2>IBOS</h2>
+                <div class="desc">Invisible Boss Operating System</div>
+                <div class="price">$4,999+</div>
+            </a>
+            <a href="taioc-framework/" class="card">
+                <div class="card-icon">τ</div>
+                <h2>TAIOC</h2>
+                <div class="desc">IBOS Optimization Mathematics</div>
+                <div class="price">$2,499+</div>
+            </a>
+            <a href="recursive-forge/" class="card">
+                <div class="card-icon">⟳</div>
+                <h2>Recursive Forge</h2>
+                <div class="desc">Multi-Axis Application Architecture</div>
+                <div class="price">$3,499+</div>
+            </a>
             <a href="universal-optimization/" class="card">
                 <div class="card-icon">Ψ</div>
                 <h2>Universal Optimization</h2>
                 <div class="formula">Z = Ψ / (X^a · Y^b)</div>
+                <div class="price">$299+</div>
             </a>
             <a href="first-principle-distillation/" class="card">
                 <div class="card-icon">Σ</div>
                 <h2>First Principle Distillation</h2>
                 <div class="formula">α = Σ / (1+N)</div>
+                <div class="price">$249+</div>
             </a>
             <a href="paradox-synthesis/" class="card">
                 <div class="card-icon">Ω</div>
                 <h2>Paradox Synthesis</h2>
                 <div class="formula">Ω = κ(A ⊗ B)</div>
+                <div class="price">$349+</div>
             </a>
             <a href="systemic-resistance/" class="card">
                 <div class="card-icon">R</div>
                 <h2>Systemic Resistance</h2>
                 <div class="formula">R = (Δ · I) / υ</div>
+                <div class="price">$279+</div>
             </a>
         </div>
     </div>
