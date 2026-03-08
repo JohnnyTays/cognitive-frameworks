@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systemic Resistance Modeler | Change Friction Predictor</title>
+    <meta name="description" content="Predict friction and pushback in any system. Mathematical framework for change management and rollout optimization.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #EF4444;
+            --primary-dark: #DC2626;
+            --secondary: #7F1D1D;
+            --accent: #F87171;
+            --dark: #0F0A0A;
+            --text: #E2E8F0;
+            --text-muted: #94A3B8;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .bg {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(239, 68, 68, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(248, 113, 113, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, var(--dark) 0%, #1A0D0D 100%);
+            z-index: -1;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .hero {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .formula-box {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem auto;
+            max-width: 700px;
+        }
+        
+        .formula {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .params {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .param {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .param-symbol {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .param-name {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+        
+        .resistance-meter {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+        }
+        
+        .meter-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .meter-bar {
+            height: 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .meter-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+        
+        .meter-fill.low { width: 30%; background: #10B981; }
+        .meter-fill.medium { width: 60%; background: #F59E0B; }
+        .meter-fill.high { width: 100%; background: #EF4444; }
+        
+        .section {
+            padding: 4rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .section p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .feature:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        
+        .code-block {
+            background: #1A0D0D;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .code-block code {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: #F87171;
+        }
+        
+        .cta {
+            padding: 5rem 5%;
+            text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(239, 68, 68, 0.05));
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(239, 68, 68, 0.5);
+        }
+        
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .params { grid-template-columns: repeat(2, 1fr); }
+            .features { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+            .formula { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">R</div>
+            <span>Systemic Resistance</span>
+        </div>
+        <span class="badge">Proprietary Framework</span>
+    </nav>
+    
+    <section class="hero">
+        <h1>Change Friction Predictor</h1>
+        <p>Predict pushback before implementing changes. Quantify resistance, optimize rollout speed, and design better change strategies.</p>
+        
+        <div class="formula-box">
+            <div class="formula">R = (Δ · I) / υ</div>
+            <p style="margin:0; font-size: 1rem;">Resistance = Change × Inertia / Velocity</p>
+        </div>
+        
+        <div class="params">
+            <div class="param">
+                <div class="param-symbol">Δ</div>
+                <div class="param-name">Change Magnitude</div>
+            </div>
+            <div class="param">
+                <div class="param-symbol">I</div>
+                <div class="param-name">Inertia Factor</div>
+            </div>
+            <div class="param">
+                <div class="param-symbol">υ</div>
+                <div class="param-name">Velocity of Change</div>
+            </div>
+            <div class="param">
+                <div class="param-symbol">R</div>
+                <div class="param-name">Resistance Output</div>
+            </div>
+        </div>
+        
+        <div class="resistance-meter">
+            <div class="meter-label">
+                <span>Low Resistance</span>
+                <span>Critical Threshold</span>
+            </div>
+            <div class="meter-bar">
+                <div class="meter-fill high"></div>
+            </div>
+            <p style="margin-top:1rem; font-size: 0.875rem; color: var(--text-muted);">R &lt; 0.5: Proceed | R 0.5-1.0: Caution | R &gt; 1.0: Significant Barrier</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Applications</h2>
+        <p>Anticipate and manage resistance in any system</p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📋</div>
+                <h3>Change Management</h3>
+                <p>Predict organizational pushback and design phased rollout strategies.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚀</div>
+                <h3>Product Launches</h3>
+                <p>Anticipate user resistance to new features and optimize adoption timing.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔄</div>
+                <h3>Process Optimization</h3>
+                <p>Calculate friction before restructuring workflows or systems.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <h2>Implementation</h2>
+        <div class="code-block">
+            <code>const systemicResistance = (delta, i, upsilon) => {
+  return (delta * i) / upsilon;
+};</code>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>Licensing Options</h2>
+        <p>Choose the level of access that fits your needs</p>
+        
+        <div class="price">$279 <span>/ month</span></div>
+        <p>Standard License - Single Agent</p>
+        <a href="https://github.com/JohnnyTays" class="btn btn-primary">Contact for Enterprise</a>
+        
+        <div style="margin-top: 3rem;">
+            <div class="price">$2,299 <span>/ year</span></div>
+            <p>Enterprise License - Unlimited Agents</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2026 Systemic Resistance Modeler. All rights reserved.</p>
+    </footer>
+</body>
+</html>
