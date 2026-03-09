@@ -3,399 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paradox Synthesis | Higher-Order Reality Engine</title>
-    <meta name="description" content="Extract higher-order reality from contradictions. Mathematical framework for creative problem-solving and innovation.">
+    <title>Paradox Synthesis | Cognitive Framework</title>
+    <meta name="description" content="Find innovative solutions through contradiction analysis. A framework for extracting insights from opposing ideas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #F59E0B;
-            --primary-dark: #D97706;
-            --secondary: #78350F;
             --accent: #FBBF24;
             --dark: #0F0A05;
             --text: #E2E8F0;
             --text-muted: #94A3B8;
         }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--dark);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        
-        .bg {
-            position: fixed;
-            inset: 0;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
-                linear-gradient(180deg, var(--dark) 0%, #1A1207 100%);
-            z-index: -1;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-        
-        .badge {
-            display: inline-block;
-            background: rgba(245, 158, 11, 0.15);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-        
-        .hero {
-            padding: 4rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .formula-box {
-            background: rgba(245, 158, 11, 0.08);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 2rem auto;
-            max-width: 700px;
-        }
-        
-        .formula {
-            font-family: 'Space Mono', monospace;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 1rem 0;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-        
-        .params {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .param {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .param-symbol {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: 700;
-        }
-        
-        .param-name {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-        
-        .section {
-            padding: 4rem 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .section p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-        
-        .feature {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-        
-        .feature:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .feature h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .feature p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            text-align: left;
-        }
-        
-        .code-block {
-            background: #1A1207;
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: left;
-            overflow-x: auto;
-            margin: 1rem 0;
-        }
-        
-        .code-block code {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.9rem;
-            color: #FBBF24;
-        }
-        
-        .paradox-example {
-            background: rgba(245, 158, 11, 0.05);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .paradox-example h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .paradox-example .equation {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.25rem;
-            color: var(--text);
-            margin: 1rem 0;
-        }
-        
-        .cta {
-            padding: 5rem 5%;
-            text-align: center;
-            background: linear-gradient(180deg, transparent, rgba(245, 158, 11, 0.05));
-        }
-        
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .cta p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-        
-        .price {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 1rem 0;
-        }
-        
-        .price span {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px rgba(245, 158, 11, 0.5);
-        }
-        
-        footer {
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        @media (max-width: 768px) {
-            .params { grid-template-columns: repeat(2, 1fr); }
-            .features { grid-template-columns: 1fr; }
-            h1 { font-size: 2rem; }
-        }
+        body { font-family: 'Outfit', sans-serif; background: var(--dark); color: var(--text); line-height: 1.7; min-height: 100vh; }
+        .bg { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(251, 191, 36, 0.08) 0%, transparent 50%); z-index: -1; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; max-width: 1000px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 700; }
+        .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .hero { padding: 4rem 5%; max-width: 800px; margin: 0 auto; text-align: center; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .tagline { font-size: 1.3rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
+        .section { padding: 3rem 5%; max-width: 800px; margin: 0 auto; }
+        .section h2 { font-size: 1.6rem; margin-bottom: 1.5rem; text-align: center; }
+        .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .benefit { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 1.5rem; }
+        .benefit-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .benefit h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .benefit p { color: var(--text-muted); font-size: 0.9rem; }
+        .transformation { background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(251, 191, 36, 0.08)); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+        .transformation h3 { color: var(--primary); margin-bottom: 1rem; }
+        .transformation ul { list-style: none; }
+        .transformation li { padding: 0.5rem 0; color: var(--text-muted); }
+        .transformation li::before { content: "→ "; color: var(--primary); }
+        .cta { padding: 3rem 5%; text-align: center; background: linear-gradient(180deg, transparent, rgba(245, 158, 11, 0.03)); }
+        .cta h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .cta p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .price { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .price span { font-size: 1rem; color: var(--text-muted); }
+        .btn { display: inline-block; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; text-decoration: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; margin-top: 1rem; }
+        .disclaimer { font-size: 0.75rem; color: var(--text-muted); margin-top: 1.5rem; max-width: 400px; margin-left: auto; margin-right: auto; }
+        footer { padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+        @media (max-width: 600px) { .benefits { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <div class="bg"></div>
-    
     <nav>
-        <div class="logo">
-            <div class="logo-icon">Ω</div>
-            <span>Paradox Synthesis</span>
-        </div>
-        <span class="badge">Proprietary Framework</span>
+        <div class="logo"><div class="logo-icon">Ω</div><span>Paradox Synthesis</span></div>
     </nav>
-    
     <section class="hero">
-        <h1>Higher-Order Reality Engine</h1>
-        <p>Extract innovative solutions from contradictions. When opposing ideas combine, new understanding emerges. The paradox is the catalyst.</p>
-        
-        <div class="formula-box">
-            <div class="formula">Ω = κ(A ⊗ B)</div>
-            <p style="margin:0; font-size: 1rem;">Emergent Reality from Contradiction</p>
-        </div>
-        
-        <div class="params">
-            <div class="param">
-                <div class="param-symbol">A</div>
-                <div class="param-name">Thesis / Position 1</div>
-            </div>
-            <div class="param">
-                <div class="param-symbol">B</div>
-                <div class="param-name">Antithesis / Position 2</div>
-            </div>
-            <div class="param">
-                <div class="param-symbol">κ</div>
-                <div class="param-name">Synthesis Coefficient</div>
-            </div>
-            <div class="param">
-                <div class="param-symbol">⊗</div>
-                <div class="param-name">Tensor Product</div>
-            </div>
-        </div>
-        
-        <div class="paradox-example">
-            <h3>Example: Innovation Through Paradox</h3>
-            <div class="equation">A: "Centralize decision making" (efficiency)</div>
-            <div class="equation">B: "Decentralize decision making" (creativity)</div>
-            <div class="equation">Ω = κ(A ⊗ B) → "Federated Autonomy"</div>
-            <p style="margin-top:1rem; color: var(--text-muted);">Result: Teams have autonomy within defined boundaries — the best of both worlds.</p>
-        </div>
+        <div class="tagline">Innovation Through Contradiction</div>
+        <h1>Paradox Synthesis</h1>
+        <p>A cognitive methodology that could allow you to find innovative solutions where conventional thinking produces contradictions. Extract higher-order insights from opposing ideas.</p>
     </section>
-    
     <section class="section">
-        <h2>Applications</h2>
-        <p>Find innovative solutions where conventional thinking fails</p>
-        
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">💡</div>
-                <h3>Strategic Planning</h3>
-                <p>Resolve strategic contradictions to find innovative market positions.</p>
+        <h2>What This Framework Could Enable</h2>
+        <div class="benefits">
+            <div class="benefit">
+                <div class="benefit-icon">💡</div>
+                <h3>Innovation Extraction</h3>
+                <p>Tools that could help find novel solutions in seemingly impossible situations</p>
             </div>
-            <div class="feature">
-                <div class="feature-icon">🎨</div>
+            <div class="benefit">
+                <div class="benefit-icon">⚖️</div>
+                <h3>Contradiction Resolution</h3>
+                <p>Methods that could help synthesize opposing viewpoints into new understanding</p>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">🎨</div>
                 <h3>Creative Problem-Solving</h3>
-                <p>Generate novel solutions by synthesizing opposing requirements.</p>
+                <p>Systems that could help break through mental blocks</p>
             </div>
-            <div class="feature">
-                <div class="feature-icon">⚖️</div>
-                <h3>Negotiation</h3>
-                <p>Find win-win solutions by identifying paradoxes in stated positions.</p>
+            <div class="benefit">
+                <div class="benefit-icon">🔄</div>
+                <h3>Strategic Insight</h3>
+                <p>Frameworks that could help find third options where there appear to be only two</p>
             </div>
         </div>
-    </section>
-    
-    <section class="section">
-        <h2>Implementation</h2>
-        <div class="code-block">
-            <code>const paradoxSynthesis = (a, b, kappa = 1) => {
-  return kappa * (a * b);
-};</code>
+        <div class="transformation">
+            <h3>The Transformation</h3>
+            <ul>
+                <li>Stop choosing between bad options</li>
+                <li>Find the third door</li>
+                <li>Innovation from contradiction</li>
+                <li>Break through impossible situations</li>
+            </ul>
         </div>
     </section>
-    
     <section class="cta">
-        <h2>Licensing Options</h2>
-        <p>Choose the level of access that fits your needs</p>
-        
+        <h2>Acquire the Framework</h2>
+        <p>Complete methodology and implementation guide</p>
         <div class="price">$349 <span>/ month</span></div>
-        <p>Standard License - Single Agent</p>
-        <a href="https://github.com/JohnnyTays" class="btn btn-primary">Contact for Enterprise</a>
-        
-        <div style="margin-top: 3rem;">
-            <div class="price">$2,999 <span>/ year</span></div>
-            <p>Enterprise License - Unlimited Agents</p>
-        </div>
+        <a href="https://t.me/johnnytays" class="btn">Inquire</a>
+        <p class="disclaimer">This is a framework and methodology only. Results could vary significantly based on implementation and execution.</p>
     </section>
-    
-    <footer>
-        <p>© 2026 Paradox Synthesis Framework. All rights reserved.</p>
-    </footer>
+    <footer><p>© 2026 Paradox Synthesis Framework</p></footer>
 </body>
 </html>
