@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBOS - Invisible Boss Operating System | The Digital Twin Brain</title>
-    <meta name="description" content="Mathematical framework for autonomous digital persona management. Your cognitive patterns replicated as operational AI.">
+    <title>IBOS - Run Your Business Through AI | Autonomous Operations Framework</title>
+    <meta name="description" content="A framework that could allow you to operate businesses through AI personas. Automate outreach, management, and communications.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #00D4FF;
             --primary-dark: #0099CC;
-            --secondary: #001F33;
             --accent: #7B61FF;
             --dark: #0A0E14;
             --text: #E8F4F8;
-            --text-muted: #6B8A9A;
+            --text-muted: #8A9BA8;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,8 +32,7 @@
             inset: 0;
             background: 
                 radial-gradient(ellipse at 0% 0%, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 100% 100%, rgba(123, 97, 255, 0.08) 0%, transparent 50%),
-                linear-gradient(180deg, var(--dark) 0%, #050810 100%);
+                radial-gradient(ellipse at 100% 100%, rgba(123, 97, 255, 0.08) 0%, transparent 50%);
             z-index: -1;
         }
         
@@ -66,179 +64,144 @@
             font-size: 1.5rem;
         }
         
-        .badge {
-            display: inline-block;
-            background: rgba(0, 212, 255, 0.12);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            border: 1px solid rgba(0, 212, 255, 0.25);
-        }
-        
         .hero {
-            padding: 5rem 5%;
-            max-width: 1000px;
+            padding: 4rem 5%;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: var(--text-muted);
             max-width: 700px;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 2rem;
         }
         
-        .formula-box {
-            background: rgba(0, 212, 255, 0.06);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin: 2rem auto;
-            max-width: 800px;
-            text-align: left;
-        }
-        
-        .formula-box h3 {
+        .hero .tagline {
+            font-size: 1.5rem;
             color: var(--primary);
-            font-size: 1rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .formula {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.1rem;
-            color: var(--text);
-            line-height: 2;
-            white-space: pre-wrap;
-        }
-        
-        .core-definition {
-            background: rgba(123, 97, 255, 0.08);
-            border: 1px solid rgba(123, 97, 255, 0.2);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: left;
-        }
-        
-        .core-definition code {
-            font-family: 'Space Mono', monospace;
-            color: var(--accent);
         }
         
         .section {
-            padding: 4rem 5%;
-            max-width: 1000px;
+            padding: 3rem 5%;
+            max-width: 900px;
             margin: 0 auto;
         }
         
         .section h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             text-align: center;
         }
         
-        .features-grid {
+        .what-it-does {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
+            margin: 2rem 0;
         }
         
-        .feature {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s;
+            padding: 1.5rem;
+            text-align: center;
         }
         
-        .feature:hover {
-            border-color: var(--primary);
-            transform: translateY(-4px);
-        }
-        
-        .feature-icon {
+        .card-icon {
             font-size: 2rem;
             margin-bottom: 1rem;
         }
         
-        .feature h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .feature p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        
-        .use-cases {
-            background: rgba(0, 212, 255, 0.03);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 2rem 0;
-        }
-        
-        .use-case {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .use-case:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        
-        .use-case-num {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-        
-        .use-case h4 {
+        .card h3 {
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
         }
         
-        .use-case p {
+        .card p {
             color: var(--text-muted);
             font-size: 0.9rem;
         }
         
+        .transformation {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(123, 97, 255, 0.08));
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+        
+        .transformation h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .before, .after {
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .before {
+            background: rgba(255,100,100,0.1);
+            border: 1px solid rgba(255,100,100,0.3);
+        }
+        
+        .after {
+            background: rgba(0,212,255,0.1);
+            border: 1px solid rgba(0,212,255,0.3);
+        }
+        
+        .before h4 { color: #FF6B6B; margin-bottom: 1rem; }
+        .after h4 { color: var(--primary); margin-bottom: 1rem; }
+        
+        .capabilities {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .cap {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+        }
+        
+        .cap-icon { font-size: 1.5rem; }
+        
+        .cap h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+        .cap p { font-size: 0.85rem; color: var(--text-muted); }
+        
         .cta {
-            padding: 5rem 5%;
+            padding: 4rem 5%;
             text-align: center;
             background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.03));
         }
         
         .cta h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
         
@@ -250,7 +213,7 @@
         .pricing {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
             margin-bottom: 2rem;
         }
@@ -260,7 +223,7 @@
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 16px;
             padding: 2rem;
-            min-width: 250px;
+            min-width: 240px;
         }
         
         .price-card.featured {
@@ -269,15 +232,9 @@
         }
         
         .price {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 700;
             color: var(--primary);
-        }
-        
-        .price span {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 400;
         }
         
         .price-card h4 {
@@ -291,7 +248,7 @@
         }
         
         .price-card li {
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             color: var(--text-muted);
             font-size: 0.9rem;
         }
@@ -301,36 +258,51 @@
             color: var(--primary);
         }
         
-        .crypto-note {
-            background: rgba(123, 97, 255, 0.1);
-            border: 1px solid rgba(123, 97, 255, 0.3);
-            border-radius: 12px;
+        .disclaimer {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
             padding: 1.5rem;
             margin-top: 2rem;
-            max-width: 500px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
         
-        .crypto-note p {
-            color: var(--accent);
-            font-size: 0.9rem;
+        .disclaimer p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
             margin: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
         }
         
         footer {
             padding: 2rem;
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.875rem;
-            border-top: 1px solid rgba(255,255,255,0.03);
+            font-size: 0.8rem;
         }
         
         @media (max-width: 768px) {
-            .features-grid { grid-template-columns: 1fr; }
+            .what-it-does { grid-template-columns: 1fr; }
+            .before-after { grid-template-columns: 1fr; }
+            .capabilities { grid-template-columns: 1fr; }
             h1 { font-size: 2rem; }
-            .pricing { flex-direction: column; align-items: center; }
-            .use-case { flex-direction: column; }
         }
     </style>
 </head>
@@ -342,150 +314,140 @@
             <div class="logo-icon">⦿</div>
             <span>IBOS</span>
         </div>
-        <span class="badge">Proprietary Framework</span>
     </nav>
     
     <section class="hero">
-        <h1>IBOS</h1>
-        <h2 style="color: var(--accent); font-size: 1.5rem; margin-bottom: 1rem;">Invisible Boss Operating System</h2>
-        <p>Your digital twin brain that can become ANY persona, manage ANY operation, control ANY business — without you ever appearing. The mathematical framework for autonomous digital identity.</p>
+        <div class="tagline">Run Your Business Through AI</div>
+        <h1>What If Your Business Could Run Itself?</h1>
+        <p>A framework that could allow you to operate through AI personas. Automate outreach, manage operations, and handle communications — without being personally visible.</p>
+        <a href="#pricing" class="btn">See What's Possible</a>
+    </section>
+    
+    <section class="section">
+        <h2>What This Framework Could Enable</h2>
         
-        <div class="core-definition">
-            <code>IBOS_Core = {
-    Your_Cognitive_Patterns: "Learns how you think and decide",
-    Your_Knowledge_Base: "All codexes, frameworks, decision trees",
-    Your_Communication_Style: "How you handle each situation",
-    Your_Business_Logic: "Your strategies, priorities, profit optimization"
-}</code>
-        </div>
-    </section>
-    
-    <section class="section">
-        <h2>Mathematical Foundation</h2>
-        <div class="formula-box">
-            <h3>IBOS Operational Capacity</h3>
-            <div class="formula">IBOS_A₂ = Σ(IBOS_Complexity_Units)
-
-Persona Management:      Active_Personas ÷ 5
-Operation Management:   Simultaneous_Operations × 3
-Interface Management:   Digital_Interfaces × 2
-Communication:         Daily_Communications ÷ 10
-Entity Maintenance:     Legal_Entities × 4
-Revenue Management:     Income_Streams × 2
-Contractor Coord:       Active_Contractors × 1.5
-Client Relations:      Active_Clients × 1</div>
-        </div>
-    </section>
-    
-    <section class="section">
-        <h2>Core Capabilities</h2>
-        <div class="features-grid">
-            <div class="feature">
-                <div class="feature-icon">🎭</div>
-                <h3>Persona Generation</h3>
-                <p>Create any digital persona with unique voice, style, and expertise. Legal consultants, business advisors, real estate experts.</p>
+        <div class="what-it-does">
+            <div class="card">
+                <div class="card-icon">🎭</div>
+                <h3>AI Personas</h3>
+                <p>Create digital representatives that could handle conversations in your place</p>
             </div>
-            <div class="feature">
-                <div class="feature-icon">📧</div>
-                <h3>Communication</h3>
-                <p>Email, LinkedIn, chat — all handled by your AI personas. Full conversation memory and context.</p>
+            <div class="card">
+                <div class="card-icon">📧</div>
+                <h3>Automated Outreach</h3>
+                <p>Systems that could manage email, LinkedIn, and messaging at scale</p>
             </div>
-            <div class="feature">
-                <div class="feature-icon">👥</div>
-                <h3>Contractor Management</h3>
-                <p>Hire, manage, and pay freelancers through AI project managers. They never know it's automated.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">💰</div>
-                <h3>Revenue Operations</h3>
-                <p>Run sales, marketing, and customer service autonomously. Close deals while you sleep.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔐</div>
-                <h3>Operational Invisibility</h3>
-                <p>All operations appear as legitimate businesses. Complete anonymity for buyers and operators.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🧠</div>
-                <h3>Cognitive Replication</h3>
-                <p>Your decision patterns, strategies, and knowledge base replicated as executable AI logic.</p>
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Contractor Coordination</h3>
+                <p>Frameworks that could help manage freelancer relationships</p>
             </div>
         </div>
-    </section>
-    
-    <section class="section">
-        <h2>Operational Scenarios</h2>
-        <div class="use-cases">
-            <div class="use-case">
-                <div class="use-case-num">1</div>
-                <div>
-                    <h4>Law Firm Outreach</h4>
-                    <p>IBOS creates "Sarah Mitchell, Senior Legal Consultant" → builds LinkedIn profile → emails 50 managing partners → negotiates $1.2M contract → delivers through "team." You never appear.</p>
+        
+        <div class="transformation">
+            <h3>The Transformation This Could Create</h3>
+            <div class="before-after">
+                <div class="before">
+                    <h4>Without This Framework</h4>
+                    <p>• You make every call yourself</p>
+                    <p>• 24 hours isn't enough</p>
+                    <p>• Scaling = hiring more people</p>
+                    <p>• Your face on every deal</p>
                 </div>
-            </div>
-            <div class="use-case">
-                <div class="use-case-num">2</div>
-                <div>
-                    <h4>Fiverr Empire</h4>
-                    <p>Post jobs as "Business Solutions Corp" → hire 5 content creators → manage via "Alex, Project Manager" → quality control → payments. Entire operation automated.</p>
-                </div>
-            </div>
-            <div class="use-case">
-                <div class="use-case-num">3</div>
-                <div>
-                    <h4>Real Estate Investing</h4>
-                    <p>"Jennifer Torres, Investment Specialist" identifies deals, negotiates terms, manages properties. Multiple personas handling different markets simultaneously.</p>
+                <div class="after">
+                    <h4>With This Framework</h4>
+                    <p>• AI handles routine communications</p>
+                    <p>• Systems work while you rest</p>
+                    <p>• Scale through automation</p>
+                    <p>• Operations could run invisibly</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <section class="cta">
-        <h2>Acquire IBOS Framework</h2>
-        <p>Mathematical framework + implementation guide + persona templates</p>
+    <section class="section">
+        <h2>Capabilities This Framework Could Provide</h2>
+        
+        <div class="capabilities">
+            <div class="cap">
+                <div class="cap-icon">🎯</div>
+                <div>
+                    <h4>Outreach Automation</h4>
+                    <p>Tools that could help you reach more prospects without manual effort</p>
+                </div>
+            </div>
+            <div class="cap">
+                <div class="cap-icon">📊</div>
+                <div>
+                    <h4>Operation Management</h4>
+                    <p>Systems that could coordinate multiple business functions</p>
+                </div>
+            </div>
+            <div class="cap">
+                <div class="cap-icon">🔄</div>
+                <div>
+                    <h4>Consistent Follow-up</h4>
+                    <p>Frameworks that could ensure no lead goes unanswered</p>
+                </div>
+            </div>
+            <div class="cap">
+                <div class="cap-icon">🛡️</div>
+                <div>
+                    <h4>Operational Separation</h4>
+                    <p>Methods that could keep personal and business identities distinct</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta" id="pricing">
+        <h2>Framework Options</h2>
+        <p>The methodology, templates, and implementation guides</p>
         
         <div class="pricing">
             <div class="price-card">
-                <div class="price">$4,999 <span>USD</span></div>
+                <div class="price">$4,999</div>
                 <h4>Starter</h4>
                 <ul>
-                    <li>Full mathematical framework</li>
+                    <li>Core methodology guide</li>
                     <li>3 persona templates</li>
-                    <li>Basic implementation guide</li>
+                    <li>Basic implementation</li>
                     <li>Email support</li>
                 </ul>
             </div>
             <div class="price-card featured">
-                <div class="price">$12,499 <span>USD</span></div>
+                <div class="price">$12,499</div>
                 <h4>Professional</h4>
                 <ul>
-                    <li>Complete IBOS framework</li>
+                    <li>Complete framework</li>
                     <li>10 persona templates</li>
-                    <li>Full implementation suite</li>
-                    <li>Operation automation scripts</li>
+                    <li>Implementation suite</li>
+                    <li>Operation scripts</li>
                     <li>Priority support</li>
                 </ul>
             </div>
             <div class="price-card">
-                <div class="price">$49,999 <span>USD</span></div>
+                <div class="price">$49,999</div>
                 <h4>Enterprise</h4>
                 <ul>
-                    <li>Unlimited persona generation</li>
-                    <li>Custom framework tuning</li>
-                    <li>Multi-operation coordination</li>
+                    <li>Unlimited personas</li>
+                    <li>Custom configuration</li>
+                    <li>Multi-operation support</li>
                     <li>White-label rights</li>
-                    <li>Direct developer access</li>
+                    <li>Direct access</li>
                 </ul>
             </div>
         </div>
         
-        <div class="crypto-note">
-            <p>💎 Payment via crypto accepted. Contact for wallet address. Anonymous transfers available.</p>
+        <a href="https://t.me/johnnytays" class="btn">Inquire About Framework</a>
+        
+        <div class="disclaimer">
+            <p><strong>Important:</strong> This is a framework and methodology only. Results could vary significantly based on implementation, market conditions, and execution. This is not a guarantee of any specific outcome. Past capabilities of similar systems do not predict future results.</p>
         </div>
     </section>
     
     <footer>
-        <p>© 2026 IBOS Framework. Mathematical property. All rights reserved.</p>
+        <p>© 2026 IBOS Framework. All rights reserved.</p>
     </footer>
 </body>
 </html>
