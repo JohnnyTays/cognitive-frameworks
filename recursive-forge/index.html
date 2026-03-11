@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursive Forge | Multi-Axis Architecture</title>
+    <meta name="description" content="Build applications across multiple axes simultaneously. A framework for multi-dimensional application architecture.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3B82F6;
+            --accent: #60A5FA;
+            --dark: #0A0F1A;
+            --text: #E8F0FF;
+            --text-muted: #6B8ABA;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Outfit', sans-serif; background: var(--dark); color: var(--text); line-height: 1.7; min-height: 100vh; }
+        .bg { position: fixed; inset: 0; background: radial-gradient(ellipse at 0% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 50%), radial-gradient(ellipse at 100% 50%, rgba(96, 165, 250, 0.08) 0%, transparent 50%); z-index: -1; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; max-width: 1000px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 700; }
+        .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .hero { padding: 4rem 5%; max-width: 800px; margin: 0 auto; text-align: center; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .tagline { font-size: 1.3rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
+        .section { padding: 3rem 5%; max-width: 800px; margin: 0 auto; }
+        .section h2 { font-size: 1.6rem; margin-bottom: 1.5rem; text-align: center; }
+        .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .benefit { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 1.5rem; }
+        .benefit-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .benefit h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .benefit p { color: var(--text-muted); font-size: 0.9rem; }
+        .transformation { background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(96, 165, 250, 0.08)); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+        .transformation h3 { color: var(--primary); margin-bottom: 1rem; }
+        .transformation ul { list-style: none; }
+        .transformation li { padding: 0.5rem 0; color: var(--text-muted); }
+        .transformation li::before { content: "→ "; color: var(--primary); }
+        .cta { padding: 3rem 5%; text-align: center; background: linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.03)); }
+        .cta h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+        .cta p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .price { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .price span { font-size: 1rem; color: var(--text-muted); }
+        .pricing-grid { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .price-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; min-width: 200px; }
+        .price-card.featured { border-color: var(--primary); background: rgba(59, 130, 246, 0.05); }
+        .btn { display: inline-block; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; text-decoration: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; margin-top: 1rem; }
+        .disclaimer { font-size: 0.75rem; color: var(--text-muted); margin-top: 1.5rem; max-width: 400px; margin-left: auto; margin-right: auto; }
+        footer { padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+        @media (max-width: 600px) { .benefits { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <nav>
+        <div class="logo"><div class="logo-icon">⟳</div><span>Recursive Forge</span></div>
+    </nav>
+    <section class="hero">
+        <div class="tagline">Build Multi-Axis Applications</div>
+        <h1>Recursive Forge</h1>
+        <p>A methodology that could allow you to architect applications across multiple axes simultaneously. Build systems that scale in parallel, adapt in real-time, and evolve without rewriting.</p>
+    </section>
+    <section class="section">
+        <h2>What This Framework Could Enable</h2>
+        <div class="benefits">
+            <div class="benefit">
+                <div class="benefit-icon">🏗️</div>
+                <h3>Multi-Axis Architecture</h3>
+                <p>Tools that could help build systems that scale across dimensions</p>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">🔄</div>
+                <h3>Recursive Adaptation</h3>
+                <p>Methods that could help systems evolve without manual intervention</p>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">📦</div>
+                <h3>Parallel Scaling</h3>
+                <p>Systems that could scale multiple components simultaneously</p>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">🧬</div>
+                <h3>Self-Evolution</h3>
+                <p>Frameworks that could help applications improve over time</p>
+            </div>
+        </div>
+        <div class="transformation">
+            <h3>The Transformation</h3>
+            <ul>
+                <li>Stop rebuilding applications</li>
+                <li>Build once, scale infinitely</li>
+                <li>Systems that adapt automatically</li>
+                <li>Future-proof architecture</li>
+            </ul>
+        </div>
+    </section>
+    <section class="cta">
+        <h2>Acquire the Framework</h2>
+        <p>Complete architectural methodology and implementation guide</p>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="price">$997</div>
+                <p>Starter</p>
+            </div>
+            <div class="price-card featured">
+                <div class="price">$2,497</div>
+                <p>Professional</p>
+            </div>
+        </div>
+        <a href="#" class="btn" onclick="alert('Lemon Squeezy setup pending - contact @johnnytays')">Get Instant Access</a>
+        <p class="disclaimer">This is a framework and methodology only. Results could vary significantly based on implementation and execution.</p>
+    </section>
+    <footer><p>© 2026 Recursive Forge Framework</p></footer>
+</body>
+</html>
