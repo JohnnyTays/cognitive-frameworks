@@ -3,372 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TongueTip AI - Find Any Moment</title>
-    <meta name="description" content="AI-powered information retrieval. Find anything you can't remember - songs, movies, names, facts. Never forget again.">
+    <title>Cognitive Frameworks | Proprietary Methodologies</title>
+    <meta name="description" content="Proprietary cognitive frameworks for autonomous systems and business optimization. IBOS, TAIOC, Recursive Forge, and more.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #FF6B35;
-            --accent: #F7C94B;
-            --dark: #0F0D14;
-            --text: #F5F5F5;
-            --text-muted: #A0A0A0;
+            --primary: #00D4FF;
+            --accent: #7B61FF;
+            --dark: #0A0E14;
+            --text: #E8F4F8;
+            --text-muted: #8A9BA8;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--dark);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        .bg {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(255, 107, 53, 0.15) 0%, transparent 60%),
-                        radial-gradient(ellipse at 50% 100%, rgba(247, 201, 75, 0.08) 0%, transparent 50%);
-            z-index: -1;
-        }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-        .hero {
-            padding: 4rem 5%;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-        .tagline {
-            font-size: 1.3rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        .search-demo {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .search-box {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,107,53,0.3);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .search-icon { font-size: 1.2rem; }
-        .search-text {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-        .examples {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-        .example {
-            background: rgba(255,107,53,0.1);
-            border: 1px solid rgba(255,107,53,0.2);
-            border-radius: 20px;
-            padding: 0.4rem 1rem;
-            font-size: 0.85rem;
-            color: var(--accent);
-        }
-        .section {
-            padding: 3rem 5%;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .section h2 {
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .feature {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        .feature h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .feature p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        .transformation {
-            background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(247, 201, 75, 0.08));
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-        .transformation h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        .transformation ul {
-            list-style: none;
-        }
-        .transformation li {
-            padding: 0.5rem 0;
-            color: var(--text-muted);
-        }
-        .transformation li::before {
-            content: "→ ";
-            color: var(--accent);
-        }
-        .cta {
-            padding: 3rem 5%;
-            text-align: center;
-            background: linear-gradient(180deg, transparent, rgba(255, 107, 53, 0.03));
-        }
-        .cta h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-        .cta p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-        .pricing-grid {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-        .price-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 1.5rem;
-            min-width: 200px;
-        }
-        .price-card.featured {
-            border-color: var(--primary);
-            background: rgba(255, 107, 53, 0.05);
-        }
-        .price {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .price span {
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-        .price-card h4 {
-            margin: 0.5rem 0;
-        }
-        .price-card ul {
-            list-style: none;
-            text-align: left;
-            margin-top: 1rem;
-        }
-        .price-card li {
-            padding: 0.3rem 0;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        .price-card li::before {
-            content: "✓ ";
-            color: var(--primary);
-        }
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-weight: 600;
-            text-decoration: none;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            margin-top: 1rem;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
-        }
-        .disclaimer {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 1.5rem;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        footer {
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-        @media (max-width: 768px) {
-            .features { grid-template-columns: 1fr; }
-            h1 { font-size: 2rem; }
-        }
+        body { font-family: 'Outfit', sans-serif; background: var(--dark); color: var(--text); line-height: 1.7; min-height: 100vh; }
+        .bg { position: fixed; inset: 0; background: radial-gradient(ellipse at 0% 0%, rgba(0, 212, 255, 0.1) 0%, transparent 50%), radial-gradient(ellipse at 100% 100%, rgba(123, 97, 255, 0.08) 0%, transparent 50%); z-index: -1; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 5%; max-width: 1000px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 700; }
+        .logo-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .hero { padding: 4rem 5%; max-width: 800px; margin: 0 auto; text-align: center; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .section { padding: 2rem 5%; max-width: 1000px; margin: 0 auto; }
+        .section h2 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; text-align: center; transition: all 0.3s; text-decoration: none; color: inherit; display: block; }
+        .card:hover { transform: translateY(-4px); border-color: var(--primary); background: rgba(0, 212, 255, 0.05); }
+        .card-icon { width: 64px; height: 64px; margin: 0 auto 1rem; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+        .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        .card .price { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        footer { padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
     </style>
 </head>
 <body>
     <div class="bg"></div>
     <nav>
-        <div class="logo">
-            <div class="logo-icon">💬</div>
-            <span>TongueTip</span>
-        </div>
+        <div class="logo"><div class="logo-icon">⦿</div><span>Cognitive Frameworks</span></div>
     </nav>
-    
     <section class="hero">
-        <div class="tagline">Never Forget Again</div>
-        <h1>Find Any Moment</h1>
-        <p>That thing on the tip of your tongue? We'll find it. Songs, movies, names, facts — describe what you remember, we'll find what you don't.</p>
-        
-        <div class="search-demo">
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
-                <span class="search-text">Describe what you're trying to remember...</span>
-            </div>
-            <div class="examples">
-                <span class="example">"song with the ocean wave beat"</span>
-                <span class="example">"actor who played in that 90s movie"</span>
-                <span class="example">"the word for when you..."</span>
-            </div>
-        </div>
-        
-        <a href="#pricing" class="btn">Get Early Access</a>
+        <h1>Proprietary Methodologies</h1>
+        <p>Advanced cognitive frameworks for autonomous systems, business optimization, and operational scaling. Frameworks that could transform how you build and operate.</p>
     </section>
-    
     <section class="section">
-        <h2>How It Works</h2>
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🧠</div>
-                <h3>Describe It</h3>
-                <p>Tell us anything you remember — lyrics, scenes, vibes, context, any detail</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <h3>We Search</h3>
-                <p>AI searches across millions of data points to find matches</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🎯</div>
-                <h3>You Remember</h3>
-                <p>Get instant results — songs, movies, names, facts, anything</p>
-            </div>
-        </div>
-        
-        <div class="transformation">
-            <h3>Stop Forgetting. Start Remembering.</h3>
-            <ul>
-                <li>That song you heard once in 2015? Found.</li>
-                <li>The actor from that movie? We'll name them.</li>
-                <li>The word that's on the tip of your tongue? Delivered.</li>
-                <li>Never lose a memory again</li>
-            </ul>
+        <h2>Available Frameworks</h2>
+        <div class="grid">
+            <a href="ibos-system/" class="card">
+                <div class="card-icon">⦿</div>
+                <h3>IBOS</h3>
+                <p>Invisible Boss Operating System</p>
+                <div class="price">$4,999+</div>
+            </a>
+            <a href="taioc-framework/" class="card">
+                <div class="card-icon">τ</div>
+                <h3>TAIOC</h3>
+                <p>IBOS Optimization Mathematics</p>
+                <div class="price">$2,499+</div>
+            </a>
+            <a href="recursive-forge/" class="card">
+                <div class="card-icon">⟳</div>
+                <h3>Recursive Forge</h3>
+                <p>Multi-Axis Application Architecture</p>
+                <div class="price">$3,499+</div>
+            </a>
+            <a href="universal-optimization/" class="card">
+                <div class="card-icon">Ψ</div>
+                <h3>Universal Optimization</h3>
+                <p>Decision & Resource Optimization</p>
+                <div class="price">$299+</div>
+            </a>
+            <a href="first-principle-distillation/" class="card">
+                <div class="card-icon">Σ</div>
+                <h3>First Principle Distillation</h3>
+                <p>Core Truth Extraction</p>
+                <div class="price">$249+</div>
+            </a>
+            <a href="paradox-synthesis/" class="card">
+                <div class="card-icon">Ω</div>
+                <h3>Paradox Synthesis</h3>
+                <p>Contradiction Analysis</p>
+                <div class="price">$349+</div>
+            </a>
+            <a href="systemic-resistance/" class="card">
+                <div class="card-icon">R</div>
+                <h3>Systemic Resistance</h3>
+                <p>Change Management & Friction Prediction</p>
+                <div class="price">$279+</div>
+            </a>
         </div>
     </section>
-    
-    <section class="cta" id="pricing">
-        <h2>Early Access Pricing</h2>
-        <p>Join the waitlist and get lifetime discount</p>
-        
-        <div class="pricing-grid">
-            <div class="price-card">
-                <div class="price">$9<span>/mo</span></div>
-                <h4>Basic</h4>
-                <ul>
-                    <li>50 searches/month</li>
-                    <li>Basic recall</li>
-                    <li>Email support</li>
-                </ul>
-            </div>
-            <div class="price-card featured">
-                <div class="price">$19<span>/mo</span></div>
-                <h4>Pro</h4>
-                <ul>
-                    <li>Unlimited searches</li>
-                    <li>Deep recall</li>
-                    <li>Priority results</li>
-                    <li>Priority support</li>
-                </ul>
-            </div>
-            <div class="price-card">
-                <div class="price">$49</div>
-                <h4>Lifetime</h4>
-                <ul>
-                    <li>Unlimited forever</li>
-                    <li>All features</li>
-                    <li>Early access</li>
-                    <li>Lifetime updates</li>
-                </ul>
-            </div>
-        </div>
-        
-        <a href="https://t.me/johnnytays" class="btn">Join Waitlist</a>
-        <p class="disclaimer">Early access pricing limited to first 1,000 users. Prices increase after launch.</p>
-    </section>
-    
-    <footer>
-        <p>© 2026 TongueTip AI. All rights reserved.</p>
-    </footer>
+    <footer><p>© 2026 Cognitive Frameworks. All rights reserved.</p></footer>
 </body>
 </html>
